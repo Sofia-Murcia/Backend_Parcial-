@@ -5,6 +5,10 @@
     }
   },
  "require": {
-  "slim/psr7": "^1.8"
+        "php": "^8.0",
+        "slim/slim": "^4.12",
+        "slim/psr7": "^1.8",
+        "illuminate/database": "^10.0",
+        "vlucas/phpdotenv": "^5.5"
  }
 }

@@ -19,8 +19,6 @@ $app->addErrorMiddleware(
     logErrorDetails: true
 );
 
-$app->add(new App\Middleware\CorsMiddleware());
-
-require __DIR__ . '/../app/Routes/api.php';
+require __DIR__ . '/../app/Routes/endpoints.php';
 
 $app->run();
