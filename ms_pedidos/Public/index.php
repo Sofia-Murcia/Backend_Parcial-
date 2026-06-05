@@ -46,7 +46,7 @@ $app->addErrorMiddleware(
     logErrorDetails: true
 );
 
-$app->add(new App\Middleware\CorsMiddleware());
+$app->add(new App\Middleware\AuthMiddleware());
 
 require __DIR__ . '/../app/Routes/endpoints.php';
 
