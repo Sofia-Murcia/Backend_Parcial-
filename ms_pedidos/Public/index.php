@@ -48,6 +48,6 @@ $app->addErrorMiddleware(
 
 $app->add(new App\Middleware\AuthMiddleware());
 
-require __DIR__ . '/../app/Routers/endpoints.php';
+require __DIR__ . '/../app/Routes/endpoints.php';
 
 $app->run();
