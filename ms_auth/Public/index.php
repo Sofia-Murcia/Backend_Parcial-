@@ -19,6 +19,6 @@ $app->addErrorMiddleware(
     logErrorDetails: true
 );
 
-require __DIR__ . '/../app/Routes/endpoints.php';
+require __DIR__ . '/../app/Routers/endpoints.php';
 
 $app->run();
