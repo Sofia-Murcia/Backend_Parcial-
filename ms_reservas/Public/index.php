@@ -19,6 +19,25 @@ $app->addErrorMiddleware(
     logErrorDetails: true
 );
 
+$app->options('/{routes:.+}', fn($req, $res) => $res);
+
+$app->add(function (\Psr\Http\Message\ServerRequestInterface $request, $handler) {
+    $origin   = $request->getHeaderLine('Origin') ?: '*';
+    $response = $handler->handle($request);
+    $response = $response
+        ->withHeader('Access-Control-Allow-Origin',      $origin)
+        ->withHeader('Access-Control-Allow-Headers',     'X-Requested-With, Content-Type, Accept, Origin, Authorization')
+        ->withHeader('Access-Control-Allow-Methods',     'GET, POST, PUT, PATCH, DELETE, OPTIONS')
+        ->withHeader('Access-Control-Allow-Credentials', 'true');
+
+    if ($request->getMethod() === 'OPTIONS') {
+        return $response->withStatus(200);
+    }
+
+    return $response;
+});
+
+
 require __DIR__ . '/../app/Routes/endpoints.php';
 
 $app->run();

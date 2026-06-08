@@ -7,34 +7,7 @@ require __DIR__ . '/../vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
 $dotenv->load();
 
-$capsule = new Illuminate\Database\Capsule\Manager();
-
-$capsule->addConnection([
-    'driver'    => 'mysql',
-    'host'      => $_ENV['DB_HOST']     ?? '127.0.0.1',
-    'port'      => $_ENV['DB_PORT']     ?? '3306',
-    'database'  => $_ENV['DB_DATABASE'] ?? 'db_pedidos',
-    'username'  => $_ENV['DB_USERNAME'] ?? 'root',
-    'password'  => $_ENV['DB_PASSWORD'] ?? '',
-    'charset'   => 'utf8mb4',
-    'collation' => 'utf8mb4_unicode_ci',
-    'prefix'    => '',
-], 'default');
-
-$capsule->addConnection([
-    'driver'    => 'mysql',
-    'host'      => $_ENV['DB_HOST']          ?? '127.0.0.1',
-    'port'      => $_ENV['DB_PORT']          ?? '3306',
-    'database'  => $_ENV['DB_AUTH_DATABASE'] ?? 'db_auth',
-    'username'  => $_ENV['DB_USERNAME']      ?? 'root',
-    'password'  => $_ENV['DB_PASSWORD']      ?? '',
-    'charset'   => 'utf8mb4',
-    'collation' => 'utf8mb4_unicode_ci',
-    'prefix'    => '',
-], 'auth');
-
-$capsule->setAsGlobal();
-$capsule->bootEloquent();
+App\Config\Database::initialize();
 
 $app = Slim\Factory\AppFactory::create();
 
@@ -46,7 +19,23 @@ $app->addErrorMiddleware(
     logErrorDetails: true
 );
 
-$app->add(new App\Middleware\AuthMiddleware());
+$app->options('/{routes:.+}', fn($req, $res) => $res);
+
+$app->add(function (\Psr\Http\Message\ServerRequestInterface $request, $handler) {
+    $origin   = $request->getHeaderLine('Origin') ?: '*';
+    $response = $handler->handle($request);
+    $response = $response
+        ->withHeader('Access-Control-Allow-Origin',      $origin)
+        ->withHeader('Access-Control-Allow-Headers',     'X-Requested-With, Content-Type, Accept, Origin, Authorization')
+        ->withHeader('Access-Control-Allow-Methods',     'GET, POST, PUT, PATCH, DELETE, OPTIONS')
+        ->withHeader('Access-Control-Allow-Credentials', 'true');
+
+    if ($request->getMethod() === 'OPTIONS') {
+        return $response->withStatus(200);
+    }
+
+    return $response;
+});
 
 require __DIR__ . '/../app/Routes/endpoints.php';
 

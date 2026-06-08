@@ -6,7 +6,6 @@ use App\Middleware\AuthMiddleware;
 
 $app->group('/api', function ($group) {
 
-    // ── Pedidos ────────────────────────────────────────────────
     $group->get('/pedidos',                    [PedidoController::class, 'index']);
     $group->get('/pedidos/{id}',               [PedidoController::class, 'show']);
     $group->post('/pedidos',                   [PedidoController::class, 'store']);
