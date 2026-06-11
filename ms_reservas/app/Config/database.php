@@ -1,40 +1,31 @@
 <?php
 
-namespace App\Config;
-
 use Illuminate\Database\Capsule\Manager as Capsule;
 
-class Database
-{
-    public static function initialize(): void
-    {
-        $capsule = new Capsule();
+$capsule = new Capsule;
 
-       $capsule->addConnection([
-            'driver'    => 'mysql',
-            'host'      => $_ENV['DB_HOST']     ?? '127.0.0.1',
-            'port'      => $_ENV['DB_PORT']      ?? '3306',
-            'database'  => $_ENV['DB_DATABASE']  ?? 'db_reservas',
-            'username'  => $_ENV['DB_USERNAME']  ?? 'root',
-            'password'  => $_ENV['DB_PASSWORD']  ?? '',
-            'charset'   => $_ENV['DB_CHARSET']   ?? 'utf8mb4',
-            'collation' => 'utf8mb4_unicode_ci',
-            'prefix'    => '',
-        ], 'default');
+$capsule->addConnection([
+    'driver'    => 'mysql',
+    'host'      => '127.0.0.1',
+    'database'  => 'db_reservas',
+    'username'  => 'root',
+    'password'  => '',
+    'charset'   => 'utf8',
+    'collation' => 'utf8_unicode_ci',
+    'prefix'    => '',
+], 'default');
 
-        $capsule->addConnection([
-            'driver'    => 'mysql',
-            'host'      => $_ENV['DB_HOST']          ?? '127.0.0.1',
-            'port'      => $_ENV['DB_PORT']           ?? '3306',
-            'database'  => $_ENV['DB_AUTH_DATABASE']  ?? 'db_auth',
-            'username'  => $_ENV['DB_USERNAME']       ?? 'root',
-            'password'  => $_ENV['DB_PASSWORD']       ?? '',
-            'charset'   => $_ENV['DB_CHARSET']        ?? 'utf8mb4',
-            'collation' => 'utf8mb4_unicode_ci',
-            'prefix'    => '',
-        ], 'auth');
+// Conexión a db_auth para validar tokens
+$capsule->addConnection([
+    'driver'    => 'mysql',
+    'host'      => '127.0.0.1',
+    'database'  => 'db_auth',
+    'username'  => 'root',
+    'password'  => '',
+    'charset'   => 'utf8',
+    'collation' => 'utf8_unicode_ci',
+    'prefix'    => '',
+], 'auth');
 
-        $capsule->setAsGlobal();
-        $capsule->bootEloquent();
-    }
-}
+$capsule->setAsGlobal();
+$capsule->bootEloquent();
