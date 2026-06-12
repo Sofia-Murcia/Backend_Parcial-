@@ -1,0 +1,65 @@
+### Health check
+GET http://127.0.0.1:8003/api/health
+
+###
+
+### Listar categorias
+GET http://127.0.0.1:8003/api/categorias
+Authorization: 21d99b1db05b496722e10c0f51c389c82f136012526f4a07b122126c1f9a9483
+
+
+###
+
+### Listar productos
+GET http://127.0.0.1:8003/api/productos
+Authorization: 21d99b1db05b496722e10c0f51c389c82f136012526f4a07b122126c1f9a9483
+
+
+###
+
+### Filtrar por categoria
+GET http://127.0.0.1:8003/api/productos?categoria_id=3
+Authorization: 21d99b1db05b496722e10c0f51c389c82f136012526f4a07b122126c1f9a9483
+
+
+###
+
+### Ver producto por ID
+GET http://127.0.0.1:8003/api/productos/1
+Authorization: Bearer 21d99b1db05b496722e10c0f51c389c82f136012526f4a07b122126c1f9a9483
+
+
+###
+
+### Crear producto
+POST http://127.0.0.1:8003/api/productos
+Authorization: 21d99b1db05b496722e10c0f51c389c82f136012526f4a07b122126c1f9a9483
+Content-Type: application/json
+
+{
+    "nombre": "Ensalada César",
+    "descripcion": "Ensalada fresca con aderezo",
+    "precio": 15000,
+    "disponible": true,
+    "categoria_id": 1
+}
+
+###
+
+### Editar producto
+PUT http://127.0.0.1:8003/api/productos/1
+Authorization: 21d99b1db05b496722e10c0f51c389c82f136012526f4a07b122126c1f9a9483
+Content-Type: application/json
+
+{
+    "nombre": "Hamburguesa Premium",
+    "precio": 32000,
+    "disponible": true,
+    "categoria_id": 3
+}
+
+###
+
+### Eliminar producto
+DELETE http://127.0.0.1:8003/api/productos/1
+Authorization: 21d99b1db05b496722e10c0f51c389c82f136012526f4a07b122126c1f9a9483
