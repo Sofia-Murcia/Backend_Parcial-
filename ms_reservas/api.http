@@ -1,0 +1,119 @@
+@token = 21d99b1db05b496722e10c0f51c389c82f136012526f4a07b122126c1f9a9483
+
+### Health check
+GET http://127.0.0.1:8002/api/health
+
+###
+
+### Listar mesas
+GET http://127.0.0.1:8002/api/mesas
+Authorization: Bearer {{token}}
+
+###
+
+### Ver mesa por ID
+GET http://127.0.0.1:8002/api/mesas/1
+Authorization: Bearer {{token}}
+
+###
+
+### Crear mesa
+POST http://127.0.0.1:8002/api/mesas
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "numero": "MESA-5",
+    "capacidad": 6,
+    "estado": "disponible"
+}
+
+###
+
+### Editar mesa
+PUT http://127.0.0.1:8002/api/mesas/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "capacidad": 8,
+    "estado": "disponible"
+}
+
+###
+
+### Cambiar estado mesa
+PATCH http://127.0.0.1:8002/api/mesas/1/estado
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "estado": "ocupada"
+}
+
+###
+
+### Listar reservas
+GET http://127.0.0.1:8002/api/reservas
+Authorization: Bearer {{token}}
+
+###
+
+### Filtrar por fecha
+GET http://127.0.0.1:8002/api/reservas?fecha=2026-06-20
+Authorization: Bearer {{token}}
+
+###
+
+### Filtrar por estado
+GET http://127.0.0.1:8002/api/reservas?estado=pendiente
+Authorization: Bearer {{token}}
+
+###
+
+### Filtrar por cliente
+GET http://127.0.0.1:8002/api/reservas?cliente=Carlos
+Authorization: Bearer {{token}}
+
+###
+
+### Ver reserva por ID
+GET http://127.0.0.1:8002/api/reservas/1
+Authorization: Bearer {{token}}
+
+###
+
+### Crear reserva
+POST http://127.0.0.1:8002/api/reservas
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "nombre_cliente": "Maria Lopez",
+    "telefono_cliente": "3109876543",
+    "cantidad_personas": 3,
+    "fecha": "2026-06-20",
+    "hora": "19:30:00",
+    "mesa_id": 1,
+    "observaciones": "Cumpleaños"
+}
+
+###
+
+### Editar reserva
+PUT http://127.0.0.1:8002/api/reservas/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "fecha": "2026-06-21",
+    "hora": "20:00:00",
+    "cantidad_personas": 4,
+    "mesa_id": 2
+}
+
+###
+
+### Cancelar reserva
+PATCH http://127.0.0.1:8002/api/reservas/1/cancelar
+Authorization: Bearer {{token}}
