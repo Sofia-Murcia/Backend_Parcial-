@@ -29,8 +29,11 @@ class AuthRepository
                 'success' => false,
                 'message' => $ex->getMessage(),
             ]));
-            $code = $ex->getCode() >= 400 ? $ex->getCode() : 400;
-            return $response->withStatus($code)->withHeader('Content-Type', 'application/json');
+
+           $code = $ex->getCode();
+            $httpCode = ($code >= 400 && $code <= 599) ? $code : 500;
+
+            return $response->withStatus($httpCode)->withHeader('Content-Type', 'application/json');
         }
     }
 
@@ -54,6 +57,9 @@ class AuthRepository
                 'success' => false,
                 'message' => $ex->getMessage(),
             ]));
+
+            $code = $ex->getCode() >= 400 ? $ex->getCode() : 400;
+
             return $response->withStatus(401)->withHeader('Content-Type', 'application/json');
         }
     }
@@ -85,6 +91,10 @@ class AuthRepository
                 'success' => false,
                 'message' => $ex->getMessage(),
             ]));
+
+            $code = $ex->getCode();
+$httpCode = ($code >= 400 && $code <= 599) ? $code : 500;
+
             return $response->withStatus(401)->withHeader('Content-Type', 'application/json');
         }
     }

@@ -11,8 +11,8 @@ $app = AppFactory::create();
 
 $app->addBodyParsingMiddleware();
 
-$endpoints($app);   // rutas primero
+$endpoints($app);
 
-$cors($app);        // CORS al final → se ejecuta PRIMERO por LIFO
+$cors($app);
 
 $app->run();

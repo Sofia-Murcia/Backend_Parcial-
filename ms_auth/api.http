@@ -1,7 +1,36 @@
-POST http://127.0.0.1:8000/login
+### Health check
+GET http://127.0.0.1:8001/api/health
+
+###
+
+### Login admin
+POST http://127.0.0.1:8001/api/login
 Content-Type: application/json
 
 {
     "usuario": "admin",
     "contrasena": "admin123"
 }
+
+###
+
+### Login empleado
+POST http://127.0.0.1:8001/api/login
+Content-Type: application/json
+
+{
+    "usuario": "empleado",
+    "contrasena": "empleado123"
+}
+
+###
+
+### Validar token
+GET http://127.0.0.1:8001/api/validate
+Authorization: 21d99b1db05b496722e10c0f51c389c82f136012526f4a07b122126c1f9a9483
+
+###
+
+### Logout
+POST http://127.0.0.1:8001/api/logout
+Authorization: 21d99b1db05b496722e10c0f51c389c82f136012526f4a07b122126c1f9a9483
