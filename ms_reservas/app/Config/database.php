@@ -15,7 +15,6 @@ $capsule->addConnection([
     'prefix'    => '',
 ], 'default');
 
-// Conexión a db_auth para validar tokens
 $capsule->addConnection([
     'driver'    => 'mysql',
     'host'      => '127.0.0.1',
