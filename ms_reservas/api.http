@@ -1,4 +1,4 @@
-@token = 21d99b1db05b496722e10c0f51c389c82f136012526f4a07b122126c1f9a9483
+@token = 1dafd1f1e4a684c7ad602ea1e91cf919e35336cd4e058ef882d896506ec6e2d5
 
 ### Health check
 GET http://127.0.0.1:8002/api/health

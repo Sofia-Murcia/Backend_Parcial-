@@ -5,35 +5,35 @@ GET http://127.0.0.1:8003/api/health
 
 ### Listar categorias
 GET http://127.0.0.1:8003/api/categorias
-Authorization: 21d99b1db05b496722e10c0f51c389c82f136012526f4a07b122126c1f9a9483
+Authorization: 1dafd1f1e4a684c7ad602ea1e91cf919e35336cd4e058ef882d896506ec6e2d5
 
 
 ###
 
 ### Listar productos
 GET http://127.0.0.1:8003/api/productos
-Authorization: 21d99b1db05b496722e10c0f51c389c82f136012526f4a07b122126c1f9a9483
+Authorization: 1dafd1f1e4a684c7ad602ea1e91cf919e35336cd4e058ef882d896506ec6e2d5
 
 
 ###
 
 ### Filtrar por categoria
 GET http://127.0.0.1:8003/api/productos?categoria_id=3
-Authorization: 21d99b1db05b496722e10c0f51c389c82f136012526f4a07b122126c1f9a9483
+Authorization: 1dafd1f1e4a684c7ad602ea1e91cf919e35336cd4e058ef882d896506ec6e2d5
 
 
 ###
 
 ### Ver producto por ID
 GET http://127.0.0.1:8003/api/productos/1
-Authorization: Bearer 21d99b1db05b496722e10c0f51c389c82f136012526f4a07b122126c1f9a9483
+Authorization: 1dafd1f1e4a684c7ad602ea1e91cf919e35336cd4e058ef882d896506ec6e2d5
 
 
 ###
 
 ### Crear producto
 POST http://127.0.0.1:8003/api/productos
-Authorization: 21d99b1db05b496722e10c0f51c389c82f136012526f4a07b122126c1f9a9483
+Authorization: 1dafd1f1e4a684c7ad602ea1e91cf919e35336cd4e058ef882d896506ec6e2d5
 Content-Type: application/json
 
 {
@@ -48,7 +48,7 @@ Content-Type: application/json
 
 ### Editar producto
 PUT http://127.0.0.1:8003/api/productos/1
-Authorization: 21d99b1db05b496722e10c0f51c389c82f136012526f4a07b122126c1f9a9483
+Authorization: 1dafd1f1e4a684c7ad602ea1e91cf919e35336cd4e058ef882d896506ec6e2d5
 Content-Type: application/json
 
 {
@@ -62,4 +62,4 @@ Content-Type: application/json
 
 ### Eliminar producto
 DELETE http://127.0.0.1:8003/api/productos/1
-Authorization: 21d99b1db05b496722e10c0f51c389c82f136012526f4a07b122126c1f9a9483
+Authorization: 1dafd1f1e4a684c7ad602ea1e91cf919e35336cd4e058ef882d896506ec6e2d5

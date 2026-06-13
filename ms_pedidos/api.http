@@ -5,19 +5,19 @@ GET http://127.0.0.1:8004/api/health
 
 ### Listar pedidos
 GET http://127.0.0.1:8004/api/pedidos
-Authorization: 21d99b1db05b496722e10c0f51c389c82f136012526f4a07b122126c1f9a9483
+Authorization: 1dafd1f1e4a684c7ad602ea1e91cf919e35336cd4e058ef882d896506ec6e2d5
 
 ###
 
 ### Filtrar por estado
 GET http://127.0.0.1:8004/api/pedidos?estado=pendiente
-Authorization: 21d99b1db05b496722e10c0f51c389c82f136012526f4a07b122126c1f9a9483
+Authorization: 1dafd1f1e4a684c7ad602ea1e91cf919e35336cd4e058ef882d896506ec6e2d5
 
 ###
 
 ### Ver pedido por ID
 GET http://127.0.0.1:8004/api/pedidos/1
-Authorization: 21d99b1db05b496722e10c0f51c389c82f136012526f4a07b122126c1f9a9483
+Authorization: 1dafd1f1e4a684c7ad602ea1e91cf919e35336cd4e058ef882d896506ec6e2d5
 
 ###
 
@@ -100,4 +100,4 @@ Content-Type: application/json
 
 ### Eliminar producto del pedido
 DELETE http://127.0.0.1:8004/api/pedidos/1/detalles/1
-Authorization: 21d99b1db05b496722e10c0f51c389c82f136012526f4a07b122126c1f9a9483
+Authorization: 1dafd1f1e4a684c7ad602ea1e91cf919e35336cd4e058ef882d896506ec6e2d5
